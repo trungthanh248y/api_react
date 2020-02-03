@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import './../../App.css';
+import { Link } from 'react-router-dom';
 
 class ProductItem extends Component {
+
+    onDelete = (id) => {
+        if (confirm('Bạn chắc chắn muốn xóa ?')) { //eslint-disable-line
+            this.props.onDelete(id);
+        }
+    }
+
     render() {
-        var {product, index} = this.props;
+        var { product, index } = this.props;
         var statusName = product.status ? 'Con Hang' : 'Het Hang';
         var statusClass = product.status ? 'warning' : 'default';
         return (
@@ -17,10 +25,17 @@ class ProductItem extends Component {
                         {statusName}
                     </span>
                 </td>
-                <button type="button" className="btn btn-success mr-10">
+                <Link 
+                    to={`/product/${product.id}/edit`}
+                    className="btn btn-success mr-10"
+                >
                     Sửa
-                </button>
-                <button type="button" className="btn btn-danger">
+                </Link>
+                <button
+                    type="button"
+                    className="btn btn-danger"
+                    onClick={() => this.onDelete(product.id)}
+                >
                     Xóa
                 </button>
                 <td></td>
