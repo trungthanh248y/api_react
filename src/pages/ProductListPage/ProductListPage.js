@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import ProductList from './../../components/ProductList/ProductList';
 import ProductItem from './../../components/ProductItem/ProductItem';
 import { connect } from 'react-redux';
@@ -35,15 +35,17 @@ class ProductListPage extends Component {
 
         var { products } = this.props;
         return (
-            <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <Link to='/product/add' className="btn btn-info mb-10">
-                    Thêm sản phẩm
-                </Link>
+            <Fragment>
+                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <Link to='/product/add' className="btn btn-info mb-10">
+                        Thêm sản phẩm
+                    </Link>
 
-                <ProductList>
-                    {this.showProducts(products)}
-                </ProductList>
-            </div>
+                    <ProductList>
+                        {this.showProducts(products)}
+                    </ProductList>
+                </div>
+            </Fragment>
         );
     }
     showProducts = (products) => {
