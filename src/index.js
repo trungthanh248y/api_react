@@ -1,15 +1,19 @@
+import { composeWithDevTools } from "redux-devtools-extension";
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import appReducers from './reducers/index';
 import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';//Thư viện sử lý middleware
 
+const composeEnhancers = composeWithDevTools({});
 const store = createStore(
     appReducers,
-    window.__REDUX_DEVTOOLS_EXTENSION__ / window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__()//tool check từng bước lưu gtri của redux
+    composeEnhancers(applyMiddleware(thunk)),//tool check từng bước lưu gtri của redux
+    //applyMiddleware(thunk) Sử dụng middleware vào project  
 )
 
 ReactDOM.render(
