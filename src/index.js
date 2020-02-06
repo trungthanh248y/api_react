@@ -8,6 +8,7 @@ import { createStore, applyMiddleware } from 'redux'
 import appReducers from './reducers/index';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';//Thư viện sử lý middleware
+import './TestGenerator';
 
 const composeEnhancers = composeWithDevTools({});
 const store = createStore(
